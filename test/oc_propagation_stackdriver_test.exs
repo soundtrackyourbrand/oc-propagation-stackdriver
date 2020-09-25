@@ -26,11 +26,11 @@ defmodule OCPropagationStackdriverTest do
 
   test "to_headers with span_ctx" do
     assert OCPropagationStackdriver.to_headers({:span_ctx, 3, 2, 1, :undefined}) == %{
-             "x-cloud-trace-context" => "00000000000000000000000000000003/2;o=1"
+             "X-Cloud-Trace-Context" => "00000000000000000000000000000003/2;o=1"
            }
 
     assert OCPropagationStackdriver.to_headers({:span_ctx, 3, 2, 0, :undefined}) == %{
-             "x-cloud-trace-context" => "00000000000000000000000000000003/2;o=0"
+             "X-Cloud-Trace-Context" => "00000000000000000000000000000003/2;o=0"
            }
   end
 

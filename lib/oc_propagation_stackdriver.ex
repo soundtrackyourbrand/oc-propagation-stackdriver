@@ -7,14 +7,15 @@ defmodule OCPropagationStackdriver do
   # SPAN_ID is an unsigned integer
   # SAMPLED is 1 or 0, if the request is beeing sampled or not
   @gcp_header_regex ~r|^(?<trace>[[:alnum:]]{32})/(?<span>[[:digit:]]+);o=(?<sample>[[:digit:]]{1})$|
-  @gcp_header "x-cloud-trace-context"
+  @gcp_header "X-Cloud-Trace-Context"
+  @plug_gcp_header String.downcase(@gcp_header)
 
   @doc """
   Get span_ctx from stackdriver header if present.
   """
   def from_headers(headers) do
     headers
-    |> Map.get(@gcp_header)
+    |> Map.get(@plug_gcp_header)
     |> decode()
   end
 
