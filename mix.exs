@@ -5,7 +5,7 @@ defmodule OCPropagationStackdriver.MixProject do
     [
       app: :oc_propagation_stackdriver,
       description: "OpenCensus header propagation for Stackdriver/GCP",
-      version: "0.2.0",
+      version: "0.3.0",
       elixir: "~> 1.9",
       deps: deps(),
       package: package()
