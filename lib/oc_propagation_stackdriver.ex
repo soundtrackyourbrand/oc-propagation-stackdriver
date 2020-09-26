@@ -30,6 +30,7 @@ defmodule OCPropagationStackdriver do
       trace_id
       |> Integer.to_string(16)
       |> String.pad_leading(32, "0")
+      |> String.downcase()
 
     "#{trace_hex}/#{span_id};o=#{sample}"
   end
